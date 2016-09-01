@@ -2,6 +2,7 @@
 a simple blog by django 1.8, under DE.
 
 host:port
+
 admin uri: host:port/admin
 
 # start server:
