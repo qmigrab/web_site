@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.template import loader, Context
+from django.template import loader, Context, RequestContext
 from django.http import HttpResponse
 from blog.models import BlogsPost
 
@@ -8,7 +8,7 @@ from blog.models import BlogsPost
 def index(request):
 	posts = BlogsPost.objects.all()
 	t = loader.get_template('bloglist.html')
-	c = Context({'posts': posts})
+	c = RequestContext(request, {'posts': posts})
 	return HttpResponse(t.render(c))
 
 
