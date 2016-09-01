@@ -17,6 +17,6 @@ def archive(request, blog_id):
 	p = BlogsPost.objects.get(pk=blog_id)
 	t = loader.get_template('archive.html')
 	# c = Context({'posts': posts})
-	c = Context({'p': p})
+	c = RequestContext(request, {'p': p})
 	return HttpResponse(t.render(c))
 
