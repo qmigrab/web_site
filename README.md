@@ -1,6 +1,9 @@
 # web_site by python frame
 a simple blog by django 1.8, under DE.
 
+host:port
+admin uri: host:port/admin
+
 # start server:
 python manage.py runserver 0.0.0.0:port
 
