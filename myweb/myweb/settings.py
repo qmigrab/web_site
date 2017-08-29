@@ -43,16 +43,20 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
 	'django.contrib.sites',
 
-	'blog',
 	'home',
-	'apply',
-	'config',
+	'blog',
+	'foto',
 	'about',
+	# 'config',
+
+	'theme',
+	'labels',
 
 	'sekizai',
 	'compressor',
 	'django_extensions',
-	'bootstrapform',
+	"ckeditor",
+	"ckeditor_uploader",
 )
 
 MIDDLEWARE_CLASSES = (
@@ -64,6 +68,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+
 )
 
 ROOT_URLCONF = 'myweb.urls'
@@ -71,7 +76,7 @@ ROOT_URLCONF = 'myweb.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['D:/Code/django/myweb/templates', ],
+        'DIRS': [os.path.join(BASE_DIR, 'templates'), ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -80,6 +85,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
 				'django.core.context_processors.i18n',
                 'django.contrib.messages.context_processors.messages',
+
 				'myweb.context_processors.current_site',
 				'sekizai.context_processors.sekizai',
             ],
@@ -94,12 +100,14 @@ WSGI_APPLICATION = 'myweb.wsgi.application'
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.sqlite3',
-    #     # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-		# 'NAME': 'mydb',
-    # }
-	'default': dj_database_url.config(default= 'sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3'))
+     'default': {
+         'ENGINE': 'django.db.backends.mysql',
+         'NAME': 'testmyweb',
+	 'USER': 'root',
+         'PASSWORD': '546585847',
+         'host': '127.0.0.1',
+          }
+	# 'default': dj_database_url.config(default= 'sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3'))
 }
 
 
@@ -108,7 +116,6 @@ DATABASES = {
 LOCALE_PATHS = (
 	os.path.join(BASE_DIR, 'locale'),
 )
-print 'adfasdf',LOCALE_PATHS
 
 # LANGUAGE_CODE = 'en-us'
 LANGUAGE_CODE = 'zh-hans'
@@ -136,4 +143,12 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.getenv('STATIC_ROOT', os.path.join(BASE_DIR, 'static'))
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.getenv('MEDIA_ROOT', os.path.join(BASE_DIR, 'media'))
-print 'static_root',STATIC_ROOT
+CKEDITOR_UPLOAD_PATH = 'upload/'
+
+# CKEDITOR_CONFIGS = {
+#     'default': {
+#         'toolbar': 'full',
+#         'height': 300,
+#         'width': "80%",
+#     },
+# }

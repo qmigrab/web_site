@@ -1,8 +1,9 @@
-from django.conf.urls import url
-import views
+# coding:utf8
 
+from django.conf.urls import url
+from views import HomeIndexView
 
 urlpatterns = [
-	url(r'^$', views.home_view),
+	url(r'^$', HomeIndexView.as_view(), name="index"),
 
 ]

@@ -13,23 +13,22 @@ Including another URLconf
     1. Add an import:  from blog import urls as blog_urls
     2. Add a URL to urlpatterns:  url(r'^blog/', include(blog_urls))
 """
-from django.conf.urls import include, url, patterns
+from django.conf.urls import include, url
 from django.contrib import admin
 from django.conf import settings
 
-
 urlpatterns = [
-	url(r'^', include('home.urls')),
-	url(r'^blog/', include('blog.urls')),
-	url(r'^apply/', include('apply.urls')),
-	url(r'^about/', include('about.urls')),
+	url(r'^', include('home.urls', namespace="yme_home")),
+	url(r'^blog/', include('blog.urls', namespace="yme_blog")),
+	url(r'^foto/', include('foto.urls', namespace="yme_foto")),
+	url(r'^about/', include('about.urls', namespace="yme_about")),
+	url(r'^label/', include('labels.urls', namespace="yme_label")),
+
 	url(r'^admin/', admin.site.urls),
+	url(r'ckeditor/', include('ckeditor_uploader.urls'))
 ]
 
 if settings.DEBUG:
 	urlpatterns += [url(r'media/(?P<path>.*)$',
 						'django.views.static.serve',
 						{'document_root': settings.MEDIA_ROOT}), ]
-
-
-
