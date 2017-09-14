@@ -102,9 +102,9 @@ WSGI_APPLICATION = 'myweb.wsgi.application'
 DATABASES = {
      'default': {
          'ENGINE': 'django.db.backends.mysql',
-         'NAME': 'ymedb',
-	 'USER': 'ymeroot',
-         'PASSWORD': 'y2017829yq',
+         'NAME': 'db',
+	 'USER': 'root',
+         'PASSWORD': '111111',
          'host': '127.0.0.1',
           }
 	# 'default': dj_database_url.config(default= 'sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3'))
