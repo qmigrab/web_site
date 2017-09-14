@@ -26,7 +26,7 @@ MANAGERS = ADMINS
 SECRET_KEY = '4jbpe0ie@0q+0#63nqap_xhc$2f&s!+zb($ytg@+ljs_a_-)s_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [os.getenv('ALLOWED_HOSTS', '*'), ]
 
@@ -102,9 +102,9 @@ WSGI_APPLICATION = 'myweb.wsgi.application'
 DATABASES = {
      'default': {
          'ENGINE': 'django.db.backends.mysql',
-         'NAME': 'testmyweb',
-	 'USER': 'root',
-         'PASSWORD': '546585847',
+         'NAME': 'ymedb',
+	 'USER': 'ymeroot',
+         'PASSWORD': 'y2017829yq',
          'host': '127.0.0.1',
           }
 	# 'default': dj_database_url.config(default= 'sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3'))
