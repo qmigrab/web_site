@@ -8,7 +8,7 @@ from ConfigParser import ConfigParser
 # basedir = os.path.join(os.path.abspath(os.path.dirname(os.path.dirname(
 #                            os.path.dirname(__file__)))))
 ALL_CONFIG = ConfigParser()
-ALL_CONFIG.read(os.path.dirname(__file__) + "/general.ini.example")
+ALL_CONFIG.read(os.path.dirname(__file__) + "/general.ini")
 
 
 class PostAppConf(AppConf):
