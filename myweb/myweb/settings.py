@@ -13,10 +13,13 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 import dj_database_url
-from config.conf import ALL_CONFIG
+from ConfigParser import ConfigParser
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+ALL_CONFIG = ConfigParser()
+ALL_CONFIG.read(os.path.dirname(__file__) + "/../config/general.ini")
+POST_PAGINATE_BY = ALL_CONFIG.get("POSTAPPCONF", "paginate")
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
@@ -48,6 +51,7 @@ INSTALLED_APPS = (
 	'blog',
 	'foto',
 	'about',
+        'disqus',
 	# 'config',
 
 	'theme',
@@ -84,7 +88,7 @@ TEMPLATES = [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
-				'django.core.context_processors.i18n',
+				'django.template.context_processors.i18n',
                 'django.contrib.messages.context_processors.messages',
 
 				'myweb.context_processors.current_site',
@@ -101,7 +105,7 @@ WSGI_APPLICATION = 'myweb.wsgi.application'
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
 DATABASES = {
-    'default': dict(ALL_CONFIG.items("DATABASE"))
+    'default': dict([(x.upper(), y) for x, y in ALL_CONFIG.items("DATABASE")])
      # 'default': {
       #    'ENGINE': 'django.db.backends.mysql',
       #    'NAME': 'db',
@@ -154,3 +158,7 @@ CKEDITOR_UPLOAD_PATH = 'upload/'
 #         'width': "80%",
 #     },
 # }
+
+DISQUS_API_KEY = 'yzMuOheZpGPQN9ccPEE6bh5VZUiCvFKmKhJSlh1dQxXondq8hyksfaTgJMddD4Hq'
+#DISQUS_API_KEY = 'itm0bFGM5eeDKEDbjPt4LQD2XByhwGNJGGYU4Pky4WMN9AdaT3yj10z3W1ygn1cg'
+DISQUS_WEBSITE_SHORTNAME = 'Ymeo'

@@ -7,12 +7,9 @@ from ConfigParser import ConfigParser
 
 # basedir = os.path.join(os.path.abspath(os.path.dirname(os.path.dirname(
 #                            os.path.dirname(__file__)))))
-ALL_CONFIG = ConfigParser()
-ALL_CONFIG.read(os.path.dirname(__file__) + "/general.ini")
-
 
 class PostAppConf(AppConf):
-    PAGINATE_BY = ALL_CONFIG.get("POSTAPPCONF", "paginate")
+#    PAGINATE_BY = ALL_CONFIG.get("POSTAPPCONF", "paginate")
 
     class Meta:
         prefix = "post"

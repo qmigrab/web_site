@@ -1,0 +1,23 @@
+upstream web {  
+  ip_hash;
+  server web:8000;
+}
+
+# portal
+server {  
+  location / {
+        proxy_pass http://web/;
+    }
+
+  location /static/ {
+        autoindex on;
+        alias /code/static/;
+    }
+
+  location /media/ {
+        alias /code/media/;
+    }
+
+  listen 80;
+  server_name localhost;
+}
