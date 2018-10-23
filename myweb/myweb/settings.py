@@ -51,7 +51,7 @@ INSTALLED_APPS = (
 	'blog',
 	'foto',
 	'about',
-        'disqus',
+    'disqus',
 	# 'config',
 
 	'theme',
@@ -103,17 +103,8 @@ WSGI_APPLICATION = 'myweb.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
-
 DATABASES = {
     'default': dict([(x.upper(), y) for x, y in ALL_CONFIG.items("DATABASE")])
-     # 'default': {
-      #    'ENGINE': 'django.db.backends.mysql',
-      #    'NAME': 'db',
-	 # 'USER': 'root',
-      #    'PASSWORD': '111111',
-      #    'host': '127.0.0.1',
-      #     }
-	# 'default': dj_database_url.config(default= 'sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3'))
 }
 
 
@@ -159,5 +150,9 @@ CKEDITOR_UPLOAD_PATH = 'upload/'
 #     },
 # }
 
-DISQUS_API_KEY = 'yzMuOheZpGPQN9ccPEE6bh5YJLynbaVZUiCvFKmKhJSlh1dQxXondq8hyksfaTgJMddD4Hq'
-DISQUS_WEBSITE_SHORTNAME = 'ymeo-info-1'
+
+# disqus configuration
+# https://disqus.com/api/applications/
+DISQUS_API_KEY = ALL_CONFIG.get("DISQUS", "key")
+DISQUS_WEBSITE_SHORTNAME = ALL_CONFIG.get("DISQUS", "shortname")
+
